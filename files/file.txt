@@ -1,0 +1,5 @@
+I will read or write this file by PHP.
+Scond line in file.txt
+Three line in file.txt 
+Fourth line in file.txt 
+Fifth line in file.txt 

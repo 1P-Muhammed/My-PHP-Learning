@@ -1,0 +1,2 @@
+Hello from php. 
+This is second line in name.txt
