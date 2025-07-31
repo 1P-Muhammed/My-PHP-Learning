@@ -312,3 +312,113 @@ echo "<br>*******************<br>";
 foreach ($discount_countries as $key => $value) :
     echo "This is the discount for every country $key => $value <br>";
 endforeach;
+
+echo "<br> ===== Include & Require =============== <br> ";
+include("tests/test.php");
+// If this file not found it shows a warning and continue the script normally.
+// I can use @ to stop the warning and continue normally.
+echo "This is a test \"include\" <br> That has a name: $name is coming from another file that named test.php";
+echo "<br>*******************<br>";
+
+require("tests/test.php"); // If this file not found it shows a fatal error and stop the script.
+echo "This is a test \"require\" <br> That has a name: $name is coming from another file that named test.php";
+
+echo "<br> ****** (Include & Require) once ******<br>";
+include_once("tests/test.php");
+
+echo $name . "<br>";
+$name = "Muhammed Sheta";
+include_once("tests/test.php");
+echo $name; // it should echo Muhammed but i have used include_once above so a another one not work.
+echo "<br>*******************<br>";
+
+require_once("tests/test.php");
+
+echo $name . "<br>";
+$name = "Muhammed Ahmed";
+require_once("tests/test.php");
+echo $name; // it should echo Muhammed but i have used include_once above so a another one not work.
+// Include_once like Require_once.
+
+echo "<br> ===== Functions => DRY =============== <br> ";
+function sayHelloTo($someone)
+{
+    return "Hello " . $someone . "<br>";
+}
+
+// Don't repaet yourself.
+echo sayHelloTo("Muhammed");
+echo sayHelloTo("Habeba");
+echo "I can use a function inside echo normally like that<br> " .
+    sayHelloTo("Younes") . "<br>";
+echo "<br>*******************<br>";
+function deepFreezer($item)
+{
+    if ($item === "Water") :
+        echo "make $item ice <br>";
+    elseif ($item === "Juice") :
+        echo "make $item cold <br>";
+    elseif ($item === "Fruits") :
+        echo "Make $item fresh <br>";
+    else :
+        echo "Unknown item <br>";
+    endif;
+}
+
+deepFreezer("Juice");
+deepFreezer("Water");
+deepFreezer("Fruits");
+deepFreezer("Watermeloon");
+
+echo "<br>*******************<br>";
+$prizes = ["PC", "Playstation", "XBOX", "Apple TV", "IPad", "IPhone"];
+function getNumber($number1, $number2)
+{
+    echo $number1 + $number2;
+}
+
+$prize_number = getNumber(2, 3); // Automatically echo 5 because this function include echo
+echo "<br>";
+var_dump($prize_number); // Null => Because the result of function without return = Null
+
+
+function getNumber2($number1, $number2)
+{
+    return $number1 + $number2;
+}
+$prize_number = getNumber2(2, 3); // It doesn't echo any value
+echo "<br>";
+var_dump($prize_number); // 5 
+echo "<br>";
+
+echo $prizes[getNumber2(2, 3)];
+echo "<br>";
+var_dump(getNumber2(2, 3));
+echo "<br> ****** Function Default Parameter ******<br>";
+
+function getData($country, $name, $age, $address)
+{
+    if ($address === ""): // Instead of default value
+        $address = "12ed Street-Alexandria";
+    endif;
+    $line_one = "Your country is $country and Your name is $name <br>";
+    $line_two = "Your age is $age and you live in $address";
+    return $line_one . $line_two;
+}
+
+echo getData("Egypt", "Muhammed", "25", "");
+echo "<br>*******************<br>";
+// By default value
+
+function getData2($country, $name, $age = "Private age", $address = "Private address")
+{
+    $line_one = "Your country is $country and Your name is $name <br>";
+    $line_two = "Your age is $age and you live in $address";
+    return $line_one . $line_two;
+}
+
+echo getData2("Egypt", "Muhammed", "25");
+echo "<br>*******************<br>";
+echo getData2("Egypt", "Muhammed", "25", "15th Street-Helwan");
+echo "<br>*******************<br>";
+echo getData2("Egypt", "Muhammed", address: "15th Street-Helwan"); // If i wanna write address without write age.
