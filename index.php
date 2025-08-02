@@ -422,3 +422,56 @@ echo "<br>*******************<br>";
 echo getData2("Egypt", "Muhammed", "25", "15th Street-Helwan");
 echo "<br>*******************<br>";
 echo getData2("Egypt", "Muhammed", address: "15th Street-Helwan"); // If i wanna write address without write age.
+
+echo "<br> ****** Function Variable Arguments List ******<br>";
+// func_num_args()
+// func_get_arg(index)
+// func_get_args()
+function calculate()
+{
+    echo "Number of arguments " . func_num_args() . "<br>";
+    echo "Argument index number 3 is: " . func_get_arg(3) . "<br>";
+    print_r(func_get_args());
+    echo "<br>";
+    $result = 0;
+    foreach (func_get_args() as $arg) :
+        $result += $arg;
+    endforeach;
+    echo $result;
+}
+
+calculate(10, 23, 24, 22, 55);
+
+echo "<br> ****** Spread Syntax ******<br>";
+function calculate2(...$numbers)
+{
+    echo "Argument index number 3 is: " . $numbers[3] . "<br>";
+    print_r($numbers);
+    echo "<br>";
+    $result = 0;
+    foreach ($numbers as $number) :
+        $result += $number;
+    endforeach;
+    echo $result;
+}
+
+calculate2(10, 23, 24, 22, 55);
+
+echo "<br> ****** Function Training $ Unpacking Arguments ******<br>";
+
+function get_data($name, $country = "Private", ...$skills)
+{
+    echo "Hello $name Your country is $country <br>";
+    echo "Your skills are" . "<br>";
+    foreach ($skills as $skill) :
+        echo "--- $skill ";
+    endforeach;
+}
+
+get_data("Muhammed", "Egypt", "PHP", "SQL", "Laravel");
+echo "<br>*******************<br>";
+
+$group_of_skills = ["PHP", "SQL", "Laravel", "System Design"];
+get_data("Muhammed", "Egypt", ...$group_of_skills); // ... Unpacking 
+echo "<br>*******************<br>";
+get_data("Muhammed", "Egypt", ...["PHP", "SQL", "System Design"]); // ... Unpacking
