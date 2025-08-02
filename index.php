@@ -28,7 +28,7 @@ echo "<br>";
 echo $c;
 echo "<br> ====== Comparison Operators 1 ===== <br> ";
 // Test equal
-echo "- Test Equal";
+echo "Test Equal:- ";
 echo "<br>";
 var_dump(100 == 100); // True
 echo "<br>";
@@ -42,7 +42,7 @@ var_dump(100 <> "100.0"); // False
 echo "<br>";
 echo "<br>";
 // Test identical
-echo "- Test Identical";
+echo "Test Identical:- ";
 echo "<br>";
 var_dump(100 === 100); // True
 echo "<br>";
@@ -102,6 +102,7 @@ $dot = "Elzero";
 $dot .= " Web"; // $dot = $dot + " Web" => Elzero Web
 $dot .= " School"; // $dot = $dot + " School" => Elzero Web School
 echo $dot;
+
 echo "<br> ===== Array Operators ============ <br> ";
 $array1 = [1 => "A", 2 => "B"];
 $array2 = [3 => "C", 4 => "D"];
@@ -125,8 +126,8 @@ var_dump($array4 === $array5);
 echo "<br> ===== Error Control Operators ===== <br> ";
 $error = 10;
 $b = @$error or die("The \$error variable not found");
-echo $b . "<br>"; // It will print error if i don't write a @.
-// it make a script stop so i will try another way.
+echo $b . "<br>"; // It will print error if i don't write an @.
+// it makes a script stop so i will try another way.
 $b = @$error;
 if (isset($error)) {
     echo $b . "<br>";
@@ -150,12 +151,12 @@ echo $b; // 10
 echo "<br> ===== Conditional Operators ========= <br> ";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // print_r($_POST);
-    // echo "<br>";
-    // echo $_POST["username"];
-    // echo "<br>";
-    // echo $_POST["language"];
-    // echo "************";
+    print_r($_POST);
+    echo "<br>";
+    echo $_POST["username"];
+    echo "<br>";
+    echo $_POST["language"];
+    echo "************";
     if ($_POST["language"] === "arabic") {
         header("Location: language-supporters/arabic.php");
         exit;
@@ -194,6 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </html>
 <?php
+
 echo "<br> ****** Alternate Syntax ******<br>";
 if (200 > 299) :
     echo "That's wrong!";
@@ -237,6 +239,7 @@ else :
     echo "You don't have any discount, Sorry";
     echo "The final price is: " . $price;
 endif;
+
 echo "<br> ****** Ternary (Short) IF ******<br>";
 echo (10 > 9) ? "True" : "False";
 echo "<br>";
@@ -262,6 +265,15 @@ switch ($day) {
     default:
         echo "Unknow day";
 }
+echo "<br>******* Another way match () **********<br>";
+
+echo match($day) {
+    "Saturday" => "Hello today is $day we are open from 10:15",
+    "Sunday" => "Hello today is $day we are open from 10:30",
+    "Monday" => "Hello today is $day we are open from 10:45",
+    "Tuesday", "Wednesday", "Thursday" => "Hello today is $day we are open from 11:00",
+    default => "Unknow day",
+};
 
 echo "<br> ===== While Loop ================= <br> ";
 $index = 0;
@@ -329,7 +341,7 @@ include_once("tests/test.php");
 echo $name . "<br>";
 $name = "Muhammed Sheta";
 include_once("tests/test.php");
-echo $name; // it should echo Muhammed but i have used include_once above so a another one not work.
+echo $name; // it should echo Muhammed but i have used include_once above so an another one doesn't work.
 echo "<br>*******************<br>";
 
 require_once("tests/test.php");
@@ -337,7 +349,7 @@ require_once("tests/test.php");
 echo $name . "<br>";
 $name = "Muhammed Ahmed";
 require_once("tests/test.php");
-echo $name; // it should echo Muhammed but i have used include_once above so a another one not work.
+echo $name; // it should echo Muhammed but i have used require_once above so an another one doesn't work.
 // Include_once like Require_once.
 
 echo "<br> ===== Functions => DRY =============== <br> ";
