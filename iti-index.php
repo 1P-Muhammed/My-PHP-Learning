@@ -105,9 +105,7 @@ const CLUB_2 = "Zamalk";
 echo CLUB_1;
 echo "<br>";
 echo CLUB_2;
-echo "<br> =================================== <br> ";
-echo "<br> =================================== <br> ";
-echo "<br> =================================== <br> ";
+
 echo "<br> ============ Homework =========== <br> ";
 echo "Welcome to php";
 echo "<br>";
@@ -235,7 +233,7 @@ echo "<br>";
 
 $mobiles = ["Iphone_13", "owner" => "Muhammed"];
 $i = 1;
-$count_of_array = count($mobiles);
+
 foreach ($mobiles as $owner => $mobile) {
     echo "Key " . $i++ . ": " . $owner . "<br>";
 }
@@ -256,14 +254,14 @@ echo "<br> ============== Form ============= <br> ";
 
 <body>
     <h3>Registraton Form</h3>
-    <form action="tests/welcome.php" method="POST">
+    <form action="tests/welcome.php" method="Get">
         <label for="full_name">Full name</label>
         <input type="text" id="full_name" name="full_name"><br>
         <label for="user_name">User name</label>
         <input type="text" id="user_name" name="user_name"><br>
         <label for="password">Password</label>
         <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Registere">
+        <input type="submit" value="Register">
     </form>
     <!--  This code has come from tests/welcome.php page.
     if (isset($_POST["full_name"])) {
@@ -334,3 +332,14 @@ while (!feof($file_handler)) {
 fclose($file_handler);
 // This is not a way to get csv's file.
 echo "<br> ==================================== <br> ";
+?>
+<form action="<?= $_SERVER['PHP_SELF'] ?>">
+
+</form>
+echo "<br>**************<br>";
+<?php 
+$str = "<script> alert('Hacked !!!!!!') </script> Muhammed";
+echo htmlspecialchars($str) . "<br>";
+echo strip_tags($str) . "<br>";
+// header("Refresh: 4; URL=tests/welcome.php?key=$str");
+
