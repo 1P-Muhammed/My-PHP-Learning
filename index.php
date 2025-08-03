@@ -487,3 +487,47 @@ $group_of_skills = ["PHP", "SQL", "Laravel", "System Design"];
 get_data("Muhammed", "Egypt", ...$group_of_skills); // ... Unpacking 
 echo "<br>*******************<br>";
 get_data("Muhammed", "Egypt", ...["PHP", "SQL", "System Design"]); // ... Unpacking
+
+echo "<br> ****** Function Variable And Function Exists ******<br>";
+function one() {
+    return "One from function";
+}
+
+$func1 = "one";
+echo $func1() ."<br>";
+
+function say_hello_to_someone($someone) {
+    return "Hello $someone";
+}
+
+$func2 = "say_hello_to_someone";
+echo $func2("Muhammed") ."<br>";
+
+$func3 = "strlen";
+echo $func3("Muhammed") ."<br>";
+
+if (function_exists("one")) {
+    echo one();
+} else {
+    echo "Function not found";
+}
+
+echo "<br> ******  Passing Arguments By Reference And Return Type Declaration ******<br>";
+function add_five(&$number) {  // By reference
+    $number += 5;
+    return $number;
+}
+
+$n = 40;
+echo $n ."<br>";
+echo add_five($n) ."<br>";
+echo $n ."<br>";
+
+function calculate3($number1, $number2): int {
+    return $number1 + $number2;
+}
+
+echo calculate3(11.5, 44.5). "<br>";
+echo gettype(calculate3(11.5, 44.5));
+
+echo "<br>========= Were Done Until Lesson 50 ===============<br>";
