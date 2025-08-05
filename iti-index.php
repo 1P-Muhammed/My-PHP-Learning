@@ -332,14 +332,10 @@ while (!feof($file_handler)) {
 fclose($file_handler);
 // This is not a way to get csv's file.
 echo "<br> ==================================== <br> ";
-?>
-<form action="<?= $_SERVER['PHP_SELF'] ?>">
+function say_hello() {
+    return __FUNCTION__;
+}
 
-</form>
+echo say_hello();
 echo "<br>**************<br>";
-<?php 
-$str = "<script> alert('Hacked !!!!!!') </script> Muhammed";
-echo htmlspecialchars($str) . "<br>";
-echo strip_tags($str) . "<br>";
-// header("Refresh: 4; URL=tests/welcome.php?key=$str");
-
+// PCRE => POSIX
