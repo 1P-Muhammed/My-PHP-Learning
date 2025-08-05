@@ -530,4 +530,171 @@ function calculate3($number1, $number2): int {
 echo calculate3(11.5, 44.5). "<br>";
 echo gettype(calculate3(11.5, 44.5));
 
-echo "<br>========= Were Done Until Lesson 50 ===============<br>";
+echo "<br>======= Were Done Until Lesson 50 ==========<br>";
+
+echo "<br>========= Anonymous Function ===============<br>";
+
+$say_hello = function () {
+    return "Hello";
+};
+echo $say_hello() ."<br>";
+echo "<br>*******************<br>";
+$say_hello_to_someone = function ($someone) {
+    return "Hello " . $someone;
+};
+echo $say_hello_to_someone("Muhammed") ."<br>";
+echo "<br>*******************<br>";
+
+$mes = "Hi ";
+$say_hi_to_someone = function ($someone) {
+    global $mes;
+    return $mes . $someone;
+};
+echo $say_hi_to_someone("Muhammed") ."<br>";
+
+echo "<br>*******************<br>";
+$mes = "Hi ";
+$say_hi_to_someone2 = function ($someone) use ($mes) {
+    return $mes . $someone;
+};
+echo $say_hi_to_someone2("Muhammed") ."<br>";
+echo "<br>*******************<br>";
+$nums = [10, 20, 30, 40, 50];
+
+function add_five2($item) {
+    return $item + 5;
+}
+print_r($nums);
+
+foreach ($nums as $num) {
+    echo "<br>";
+    echo add_five2($num);
+}
+$nums2 = [10, 20, 30, 40, 50];
+echo "<br>*******************<br>";
+$nums_after_adding_five = array_map("add_five2", $nums);
+echo "<pre>";
+print_r($nums_after_adding_five);
+echo "</pre>";
+echo "<br>*******************<br>";
+$nums_after_adding_ten = array_map(function($item){ return $item + 10;}, $nums);
+echo "<pre>";
+print_r($nums_after_adding_ten);
+echo "</pre>";
+
+echo "<br>========= Arrow Function ===============<br>";
+
+$say_hello = fn() => "Hello";
+echo $say_hello();
+echo "<br>*******************<br>";
+$say_hello_to_someone = fn ($someone) =>  "Hello " . $someone;
+echo $say_hello_to_someone("Muhammed") ."<br>";
+
+echo "<br>*******************<br>";
+$say_hi_to_someone2 = fn($someone) => $mes . $someone;
+echo $say_hi_to_someone2("Muhammed");
+
+echo "<br>*******************<br>";
+$nums_after_adding_ten = array_map(fn($item) => $item + 10, $nums);
+echo "<pre>";
+print_r($nums_after_adding_ten);
+echo "</pre>";
+
+echo "<br>====== String Access And Update Elements ======<br>";
+$str = "Muhammed";
+echo "First letter is $str[0]<br>";
+echo "First letter is $str[3]<br>";
+echo "Number of letters ". strlen($str) . "<br>";
+echo "Last letter is " . $str[strlen($str) - 1] . "<br>";
+$str[0] = "m";
+echo $str;
+
+echo "<br>====== String Functions  ======<br>";
+$name = "Muhammed Ahmed Sheta";
+$name2 = "muhammed ahmed sheta";
+echo lcfirst($name) . "<br>";
+echo ucfirst($name2) . "<br>";
+echo strtolower($name) . "<br>";
+echo strtoupper($name2) . "<br>";
+echo ucwords($name2) . "<br>";
+echo str_repeat($name, 3) . "<br>";
+
+echo "<br>*******************<br>";
+$friends = ["Ahmed" , "Muhammed", "Ali", "salem"];
+echo implode(" ", $friends) ."<br>";
+print_r( explode(" ", $name));
+echo "<br>";
+print_r( explode(" ", $name, 2));
+echo "<br>";
+print_r( explode(" ", $name, -1));
+echo "<br>";
+echo str_shuffle($name) . "<br>";
+echo strrev($name) . "<br>";
+echo trim("                 Muhammed    ") . "<br>";
+echo trim("        #######  Muhammed  ##  ", "##") . "<br>";
+echo ltrim("      muhammed") . "<br>";
+echo rtrim("Muhammed sheta           ") . "<br>";
+
+echo "<br>*******************<br>";
+echo chunk_split("Muhammed Ahmed", 3, "-");
+echo "<pre>";
+print_r(str_split("$name", 3));
+echo "</pre>";
+echo "<h3> Hello World! </h3>". "<br>";
+echo strip_tags("<h3> Hello World! </h3>"). "<br>";
+echo strip_tags("<h3> Hello World! </h3>", "<h3>"). "<br>";
+echo nl2br("Elzero\nWeb\nSchool");
+
+echo "<br>*******************<br>";
+echo strpos("Hello Hello", "H") . "<br>"; // Case sensitive
+echo strpos("Hello Hello", "H", 4) . "<br>";
+var_dump( strpos("Hello Hello", "H", -2));
+echo "<br>";
+echo strrpos("Hello Hello", "H") . "<br>"; // Case sensitive
+echo stripos("hello Hello", "H") . "<br>"; // Case insensitive
+echo strripos("Hello hello", "H") . "<br>"; // Case insensitive
+echo substr_count("Hello Hello", "He") . "<br>";
+echo substr_count("Hello Hello", "He", 0, 4) . "<br>";
+
+echo "<br>*******************<br>";
+parse_str("name=Muhammed&email=mu@gmail.com&os=mac", $query);
+echo "<pre>";
+print_r($query);
+echo "</pre>";
+echo $query["name"] . "<br>";
+echo $query["os"] . "<br>";
+echo "Hello || * $ % +_" . "<br>";
+echo quotemeta("Hello || * $ % +_") . "<br>";
+echo str_pad("12", 8, 0) . "<br>";
+echo str_pad("25555", 8, 0, STR_PAD_BOTH) . "<br>";
+echo str_pad("443", 8, 0, STR_PAD_LEFT) . "<br>";
+echo str_pad("2245", 8, 0, STR_PAD_RIGHT) . "<br>";
+echo strtr("Hello Worl@", "@", "d") . "<br>";
+$translation = ["@" => "d", "#" => "H"];
+echo strtr("#ello Worl@",$translation) . "<br>";
+
+echo "<br>*******************<br>";
+echo str_replace("%", "H", "%ello %ello", $count) . "<br>"; // case sensitive
+echo "Replaces count is: " . $count . "<br>";
+echo str_replace(["%", "@"], ["H", "o"], "%ell@ %ell@", $count) . "<br>"; // case sensitive
+echo "<pre>";
+print_r(str_replace("one", 1, ["one", "two", "three", "four"]));
+echo "</pre>";
+echo "<pre>";
+print_r(str_replace(["one", "two"], [1, 2], ["one", "two", "three", "four"]));
+echo "</pre>";
+echo "<pre>";
+print_r(str_ireplace(["One", "two", 'Three'], [1, 2], ["one", "two", "three", "four"]));
+echo "</pre>";
+
+echo "<br>*******************<br>";
+echo substr_replace("OneTwo", "1", 0, 3) . "<br>";
+echo substr_replace("OneTwo", "1", -3, 3) . "<br>";
+echo substr_replace("Elzero_Web_School", "A", 7, 3) . "<br>";
+echo substr_replace("Elzero_Web_School", "A", 7, -2) . "<br>";
+echo substr_replace("Elzero_Web_School", "A", 7, -9) . "<br>";
+echo substr_replace("Elzero_Web_School", "A", 7, -10) . "<br>";
+echo substr_replace("Elzero_Web_School", "A", 1, 0) . "<br>";
+echo "<pre>";
+print_r(substr_replace(["one", "two"], 1, 1));
+echo "</pre>";
