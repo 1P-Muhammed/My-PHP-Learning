@@ -338,4 +338,141 @@ function say_hello() {
 
 echo say_hello();
 echo "<br>**************<br>";
-// PCRE => POSIX
+// PCRE => PCRA 2
+// POSIX
+// REGEX 101
+
+$str = "Hi my name is ahmed";
+$pattern = "/[^abc]+/";
+$preg = preg_match($pattern, $str);
+var_dump($preg); // int(1)
+echo "<br>";
+$str2 = "abcabcbcabac";
+$pattern2 = "/[^abc]+/";
+$preg2 = preg_match($pattern2, $str2);
+var_dump($preg2); // int(0)
+
+// preg_match => return 1 if found match and 0 if not fount match and false if there is an error.
+echo "<br>";
+$str = "Hi my name is ahmed";
+$pattern = "/[^abc]+/";
+$preg = preg_match_all($pattern, $str, $matches);
+var_dump($preg); // int(3)
+echo "<pre>";
+var_dump($matches);
+echo "</pre>";
+echo "<br> =========== Form Validation ============== <br> ";
+
+?>
+<form action="<?= $_SERVER['PHP_SELF']?>" method="GET">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+    <input type="submit" value="check">
+</form>
+
+<?php 
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+    $email_pattern = "/[-_a-zA-Z0-9.+!%]*@[-_a-zA-Z0-9.]*/";
+    $email_check = preg_match($email_pattern, $email);
+    if ($email_check) {
+        echo $email;
+    } else {
+        echo "Please Write a correct email";
+    }
+}
+echo "<br>********************<br>";
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+    $email_pattern = "/[-_a-zA-Z0-9.+!%]*@[-_a-zA-Z0-9.]*/";
+
+    if (!empty($email)) {    
+        $email_check = preg_match($email_pattern, $email);
+        if ($email_check) {
+            echo $email;
+        } else {
+            echo "Please Write a correct email";
+        }
+    }
+} else {
+    echo "Email is required Field";
+}
+echo "<br>********************<br>";
+?>
+
+<?php
+$message = '';
+if (isset($_GET['message'])) {
+    $message = $_GET['message'];
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <?php if ($message): ?>
+        <p style="color:red;"><?php echo htmlspecialchars($message); ?></p>
+    <?php endif; ?>
+
+    <form action="tests/welcome2.php" method="GET">
+        <label for="email2">Email</label>
+        <input type="text" id="email2" name="email2">
+        <input type="submit" value="check">
+    </form>
+</body>
+</html>
+
+<?php 
+echo "<br> =========== Data Filtering ============== <br> ";
+// Validation 
+// Sanitization
+?>
+<form action="<?= $_SERVER['PHP_SELF']?>" method="GET">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+    <input type="submit" value="check">
+</form>
+
+<?php 
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+    $correctEmail = filter_var($email, FILTER_VALIDATE_EMAIL); 
+    if ($correctEmail) {
+        echo $correctEmail;
+    } else {
+        echo "Please Write a Correct Email";
+    }
+}
+echo "<br>********************<br>";
+?>
+<form action="<?=$_SERVER['PHP_SELF']?>" method="get">
+    <label for="agree">Are you agree</label>
+    <input type="text" id="agree" name="agree">
+</form>
+<?php
+    if (isset($_GET['agree'])) {
+        $agree = $_GET['agree'];
+        $checkAgree = filter_var($agree, FILTER_VALIDATE_BOOLEAN);
+        if ($checkAgree) {
+            echo "You agree our contract";
+        } else {
+            echo "Please think again";
+        }
+    }
+echo "<br>********************<br>";
+    if (isset($_GET['agree'])) {
+        $agree = $_GET['agree'];
+        $checkAgree = filter_var($agree, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        $theChoise =  match($checkAgree) {
+            true => "You are agree",
+            false => "Please think again",
+            null => "Write something like yes or no",
+            default => "I know you are very tired but i will give u a break now",
+        };
+        echo $theChoise;
+    }
+
+
+?>
