@@ -24,6 +24,6 @@ if (isset($_GET['email2'])) {
 }
 
 // Wait 3 seconds then redirect back
-header("Refresh: 3; URL=../iti-index.php?message=" . urlencode($message));
+header("Refresh: 3; URL=../iti-index.php?message=" . urlencode($message)); // I have comented it now
 echo "<p>$message</p>";
 echo "<p>Redirecting back in 3 seconds...</p>";

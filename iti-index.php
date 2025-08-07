@@ -440,7 +440,8 @@ if (isset($_GET['email'])) {
     $email = $_GET['email'];
     $correctEmail = filter_var($email, FILTER_VALIDATE_EMAIL); 
     if ($correctEmail) {
-        echo $correctEmail;
+        $finalEmail = filter_var($correctEmail, FILTER_SANITIZE_EMAIL);
+        echo $finalEmail;
     } else {
         echo "Please Write a Correct Email";
     }
@@ -474,5 +475,4 @@ echo "<br>********************<br>";
         echo $theChoise;
     }
 
-
-?>
+echo "<br> =========== Sanitization ============== <br> ";

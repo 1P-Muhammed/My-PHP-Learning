@@ -134,11 +134,11 @@ if (isset($error)) {
 } else {
     echo "The \$error variable not found<br>";
 }
-$file = @file("tests/welcome2.php") or die("This file not found"); // Stop script
+$file = @file("tests/welcome3.php") or die("This file not found"); // Stop script
 echo "<pre>";
 print_r($file);
 echo "</pre>";
-(@include("tests/welcome2.php")) or die("Include file not found");
+(@include("tests/welcome3.php")) or die("Include file not found");
 
 echo "<br> ===== Operators precedence ========= <br> ";
 echo 10 || false || 0 || [] || ""; // 1
@@ -609,7 +609,7 @@ echo "Last letter is " . $str[strlen($str) - 1] . "<br>";
 $str[0] = "m";
 echo $str;
 
-echo "<br>====== String Functions  ======<br>";
+echo "<br>====== String Functions ======<br>";
 $name = "Muhammed Ahmed Sheta";
 $name2 = "muhammed ahmed sheta";
 echo lcfirst($name) . "<br>";
@@ -698,3 +698,108 @@ echo substr_replace("Elzero_Web_School", "A", 1, 0) . "<br>";
 echo "<pre>";
 print_r(substr_replace(["one", "two"], 1, 1));
 echo "</pre>";
+
+echo "<br>*******************<br>";
+$str = "Welcome to Elzero Web School very_very_very_long_wrod";
+echo wordwrap($str, 7, "<br>") . "<br>" . "<br>";
+echo wordwrap($str, 7, "<br>", true) . "<br>";
+
+echo ord("a") . "<br>";
+
+echo chr(98) . "<br>";
+
+echo similar_text("Elzeero", "Elzeroo") . "<br>";
+echo similar_text("Elzeero", "Elzeroo", $precent) . "<br>";
+echo $precent . "%" . "<br>";
+echo "<br>*******************<br>";
+echo strstr("Elzero Web", "W") . "<br>"; // Web
+echo strstr("Elzero Web", "z") . "<br>"; // zero Web
+echo strstr("Elzero Web", "W", True) . "<br>"; // Elzero
+
+echo stristr("Elzero Web", "w") . "<br>"; // Elzero
+
+echo number_format(10000000.14344,2) ."<br>";   
+echo number_format(10000000.14344,2, "-", "_") ."<br>";   
+
+echo "<br>====== Array Functions ======<br>";
+$friends = ["Muhammed", "Ahmed", "Younes", "Soliman"];
+echo "<pre>";
+print_r(array_chunk($friends,2));
+echo "</pre>";
+
+$countries = ["EG" => "Egypt", "KSA" => "Saudi Arabia", "SY" => "Syria"];
+echo "<pre>";
+print_r(array_chunk($countries,2, true));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_change_key_case($countries));
+echo "</pre>";
+
+$keys = ["M", "A", "Y", "S"];
+$values = ["Muhammed", "Ahmed", "Younes", "Soliman"];
+echo "<pre>";
+print_r(array_combine($keys, $values));
+echo "</pre>";
+
+$counting = ["A", "A", "B", "B", "B", "C", "1"];
+echo "<pre>";
+print_r(array_count_values($counting));
+echo "</pre>";
+
+echo "<br>*******************<br>";
+echo "<pre>";
+print_r(array_reverse($countries));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_reverse($counting));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_flip($countries));
+echo "</pre>";
+
+echo count($countries) ."<br>";
+
+if (in_array("1", $counting)) :
+    echo "The element is found" . "<br>";
+endif;
+if (in_array(1, $counting, true)) :
+    echo "The element is found" . "<br>";
+else :
+    echo "Not found" . "<br>";
+endif;
+
+if (array_key_exists("EG", $countries)) :
+    echo "The key is exists";
+endif;
+
+echo "<br>*******************<br>";
+$friends = ["Muhammed", "Ahmed", "Younes", "Soliman", "Muhammed"];
+echo "<pre>";
+print_r(array_keys($friends));
+echo "</pre>";
+echo "<pre>";
+print_r(array_keys($friends, "Muhammed"));
+echo "</pre>";
+
+$countries = ["EG" => "Egypt", "KSA" => "Saudi Arabia", "SY" => "Syria"];
+echo "<pre>";
+print_r(array_values($friends));
+echo "</pre>";
+
+$pad = ["M", "A", "Y", "S"];
+echo "<pre>";
+print_r(array_pad($pad, 10, "**"));
+echo "</pre>";
+echo "<pre>";
+print_r(array_pad($pad, -10, "**"));
+echo "</pre>";
+
+// In mathematics, A product is the result of Multiplication
+$product = [ 20, 4, 55, 4];
+echo array_product($product) . "<br>";
+
+$sum = [44, 5, 44, 34];
+echo array_sum($sum) . "<br>";   
