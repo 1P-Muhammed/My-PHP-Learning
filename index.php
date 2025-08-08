@@ -803,3 +803,102 @@ echo array_product($product) . "<br>";
 
 $sum = [44, 5, 44, 34];
 echo array_sum($sum) . "<br>";   
+
+echo "<br>*******************<br>";
+$friends = ["Muhammed", "Ahmed", "Younes", "Soliman"];
+echo current($friends) ."<br>";
+echo next($friends) ."<br>";
+echo next($friends) ."<br>";
+echo prev($friends) ."<br>";
+echo next($friends) ."<br>";
+echo reset($friends) ."<br>";
+echo end($friends) ."<br>";
+
+echo "<br>*******************<br>";
+$merge_one = ["one" => "PHP", "two" => "CSS", "three" => "JavaScript"];
+$merge_two = ["one" => "HTML", "four" => "Python"];
+
+echo "<pre>";
+print_r(array_merge($merge_one, $merge_two));
+echo "</pre>";
+$merge_three = [10 => "PHP", 20 => "CSS", 30 => "JavaScript"];
+$merge_four = [40 => "HTML", 10 => "Python"];
+
+echo "<pre>";
+print_r(array_merge($merge_three, $merge_four));
+echo "</pre>";
+
+$main = ["one" => "PHP", "two" => "CSS", "three" => "JavaScript"];
+$replace = ["one" => "HTML", "four" => "Python"];
+
+echo "<pre>";
+print_r(array_replace($main, $replace));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_replace($merge_three, $merge_four));
+echo "</pre>";
+
+$randomNumber = [1, 2, 3, 4, 5, 6];
+echo "<pre>";
+print_r(array_rand($randomNumber));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_rand($randomNumber, 3));
+echo "</pre>";
+
+echo $randomNumber[array_rand($randomNumber)];
+
+shuffle($randomNumber);
+echo "<pre>";
+print_r($randomNumber);
+echo "</pre>";
+
+echo "<br>*******************<br>";
+$char = ["A","B", "C", "D"];
+$first = array_shift($char); // Remove from the begining of array
+echo $first . "<br>";
+print_r($char);
+echo "<br>";
+
+$last = array_pop($char); // remove from the end or array
+echo $last . "<br>";
+print_r($char);
+echo "<br>";
+
+$add_first = array_unshift($char, "A"); // add to the begining of array
+print_r($char);
+echo "<br>";
+
+$add_first = array_push($char, "A"); // add to the end of array
+print_r($char);
+echo "<br>";
+
+$char[] = "M";
+print_r($char); // Ia fastest that array_push
+echo "<br>";
+
+echo "<br>*******************<br>";
+$chars = ["A", "B", "C", "D", "E", "F", "G", "H"];
+$chars_with_string_key = ["A" => 1, "B" => 4, "C"=> 5];
+$chars_with_number_key = [1 => 20, 2 => 30, 3 => 40];
+
+echo "<pre>";
+print_r(array_slice($chars, 2));
+print_r(array_slice($chars, -2));
+print_r(array_slice($chars, 2, -2));
+print_r(array_slice($chars, 2, 4));
+print_r(array_slice($chars_with_string_key, 0, 2));
+print_r(array_slice($chars_with_number_key, 0, 2 ));
+print_r(array_slice($chars_with_number_key, 0, 2 , true));
+echo "</pre>";
+
+$chars2 = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+echo "<pre>";
+print_r(array_splice($chars2, 2, -2));
+print_r($chars2);
+print_r(array_splice($chars2, 0, 2, ["str1", "str2"]));
+print_r($chars2);
+echo "</pre>";
