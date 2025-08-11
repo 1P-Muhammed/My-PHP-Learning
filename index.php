@@ -267,7 +267,7 @@ switch ($day) {
 }
 echo "<br>******* Another way match () **********<br>";
 
-echo match($day) {
+echo match ($day) {
     "Saturday" => "Hello today is $day we are open from 10:15",
     "Sunday" => "Hello today is $day we are open from 10:30",
     "Monday" => "Hello today is $day we are open from 10:45",
@@ -489,22 +489,24 @@ echo "<br>*******************<br>";
 get_data("Muhammed", "Egypt", ...["PHP", "SQL", "System Design"]); // ... Unpacking
 
 echo "<br> ****** Function Variable And Function Exists ******<br>";
-function one() {
+function one()
+{
     return "One from function";
 }
 
 $func1 = "one";
-echo $func1() ."<br>";
+echo $func1() . "<br>";
 
-function say_hello_to_someone($someone) {
+function say_hello_to_someone($someone)
+{
     return "Hello $someone";
 }
 
 $func2 = "say_hello_to_someone";
-echo $func2("Muhammed") ."<br>";
+echo $func2("Muhammed") . "<br>";
 
 $func3 = "strlen";
-echo $func3("Muhammed") ."<br>";
+echo $func3("Muhammed") . "<br>";
 
 if (function_exists("one")) {
     echo one();
@@ -513,21 +515,23 @@ if (function_exists("one")) {
 }
 
 echo "<br> ******  Passing Arguments By Reference And Return Type Declaration ******<br>";
-function add_five(&$number) {  // By reference
+function add_five(&$number)
+{  // By reference
     $number += 5;
     return $number;
 }
 
 $n = 40;
-echo $n ."<br>";
-echo add_five($n) ."<br>";
-echo $n ."<br>";
+echo $n . "<br>";
+echo add_five($n) . "<br>";
+echo $n . "<br>";
 
-function calculate3($number1, $number2): int {
+function calculate3($number1, $number2): int
+{
     return $number1 + $number2;
 }
 
-echo calculate3(11.5, 44.5). "<br>";
+echo calculate3(11.5, 44.5) . "<br>";
 echo gettype(calculate3(11.5, 44.5));
 
 echo "<br>======= Were Done Until Lesson 50 ==========<br>";
@@ -537,12 +541,12 @@ echo "<br>========= Anonymous Function ===============<br>";
 $say_hello = function () {
     return "Hello";
 };
-echo $say_hello() ."<br>";
+echo $say_hello() . "<br>";
 echo "<br>*******************<br>";
 $say_hello_to_someone = function ($someone) {
     return "Hello " . $someone;
 };
-echo $say_hello_to_someone("Muhammed") ."<br>";
+echo $say_hello_to_someone("Muhammed") . "<br>";
 echo "<br>*******************<br>";
 
 $mes = "Hi ";
@@ -550,18 +554,19 @@ $say_hi_to_someone = function ($someone) {
     global $mes;
     return $mes . $someone;
 };
-echo $say_hi_to_someone("Muhammed") ."<br>";
+echo $say_hi_to_someone("Muhammed") . "<br>";
 
 echo "<br>*******************<br>";
 $mes = "Hi ";
 $say_hi_to_someone2 = function ($someone) use ($mes) {
     return $mes . $someone;
 };
-echo $say_hi_to_someone2("Muhammed") ."<br>";
+echo $say_hi_to_someone2("Muhammed") . "<br>";
 echo "<br>*******************<br>";
 $nums = [10, 20, 30, 40, 50];
 
-function add_five2($item) {
+function add_five2($item)
+{
     return $item + 5;
 }
 print_r($nums);
@@ -577,7 +582,9 @@ echo "<pre>";
 print_r($nums_after_adding_five);
 echo "</pre>";
 echo "<br>*******************<br>";
-$nums_after_adding_ten = array_map(function($item){ return $item + 10;}, $nums);
+$nums_after_adding_ten = array_map(function ($item) {
+    return $item + 10;
+}, $nums);
 echo "<pre>";
 print_r($nums_after_adding_ten);
 echo "</pre>";
@@ -587,8 +594,8 @@ echo "<br>========= Arrow Function ===============<br>";
 $say_hello = fn() => "Hello";
 echo $say_hello();
 echo "<br>*******************<br>";
-$say_hello_to_someone = fn ($someone) =>  "Hello " . $someone;
-echo $say_hello_to_someone("Muhammed") ."<br>";
+$say_hello_to_someone = fn($someone) =>  "Hello " . $someone;
+echo $say_hello_to_someone("Muhammed") . "<br>";
 
 echo "<br>*******************<br>";
 $say_hi_to_someone2 = fn($someone) => $mes . $someone;
@@ -604,7 +611,7 @@ echo "<br>====== String Access And Update Elements ======<br>";
 $str = "Muhammed";
 echo "First letter is $str[0]<br>";
 echo "First letter is $str[3]<br>";
-echo "Number of letters ". strlen($str) . "<br>";
+echo "Number of letters " . strlen($str) . "<br>";
 echo "Last letter is " . $str[strlen($str) - 1] . "<br>";
 $str[0] = "m";
 echo $str;
@@ -620,13 +627,13 @@ echo ucwords($name2) . "<br>";
 echo str_repeat($name, 3) . "<br>";
 
 echo "<br>*******************<br>";
-$friends = ["Ahmed" , "Muhammed", "Ali", "salem"];
-echo implode(" ", $friends) ."<br>";
-print_r( explode(" ", $name));
+$friends = ["Ahmed", "Muhammed", "Ali", "salem"];
+echo implode(" ", $friends) . "<br>";
+print_r(explode(" ", $name));
 echo "<br>";
-print_r( explode(" ", $name, 2));
+print_r(explode(" ", $name, 2));
 echo "<br>";
-print_r( explode(" ", $name, -1));
+print_r(explode(" ", $name, -1));
 echo "<br>";
 echo str_shuffle($name) . "<br>";
 echo strrev($name) . "<br>";
@@ -640,15 +647,15 @@ echo chunk_split("Muhammed Ahmed", 3, "-");
 echo "<pre>";
 print_r(str_split("$name", 3));
 echo "</pre>";
-echo "<h3> Hello World! </h3>". "<br>";
-echo strip_tags("<h3> Hello World! </h3>"). "<br>";
-echo strip_tags("<h3> Hello World! </h3>", "<h3>"). "<br>";
+echo "<h3> Hello World! </h3>" . "<br>";
+echo strip_tags("<h3> Hello World! </h3>") . "<br>";
+echo strip_tags("<h3> Hello World! </h3>", "<h3>") . "<br>";
 echo nl2br("Elzero\nWeb\nSchool");
 
 echo "<br>*******************<br>";
 echo strpos("Hello Hello", "H") . "<br>"; // Case sensitive
 echo strpos("Hello Hello", "H", 4) . "<br>";
-var_dump( strpos("Hello Hello", "H", -2));
+var_dump(strpos("Hello Hello", "H", -2));
 echo "<br>";
 echo strrpos("Hello Hello", "H") . "<br>"; // Case sensitive
 echo stripos("hello Hello", "H") . "<br>"; // Case insensitive
@@ -671,7 +678,7 @@ echo str_pad("443", 8, 0, STR_PAD_LEFT) . "<br>";
 echo str_pad("2245", 8, 0, STR_PAD_RIGHT) . "<br>";
 echo strtr("Hello Worl@", "@", "d") . "<br>";
 $translation = ["@" => "d", "#" => "H"];
-echo strtr("#ello Worl@",$translation) . "<br>";
+echo strtr("#ello Worl@", $translation) . "<br>";
 
 echo "<br>*******************<br>";
 echo str_replace("%", "H", "%ello %ello", $count) . "<br>"; // case sensitive
@@ -718,18 +725,18 @@ echo strstr("Elzero Web", "W", True) . "<br>"; // Elzero
 
 echo stristr("Elzero Web", "w") . "<br>"; // Elzero
 
-echo number_format(10000000.14344,2) ."<br>";   
-echo number_format(10000000.14344,2, "-", "_") ."<br>";   
+echo number_format(10000000.14344, 2) . "<br>";
+echo number_format(10000000.14344, 2, "-", "_") . "<br>";
 
 echo "<br>====== Array Functions ======<br>";
 $friends = ["Muhammed", "Ahmed", "Younes", "Soliman"];
 echo "<pre>";
-print_r(array_chunk($friends,2));
+print_r(array_chunk($friends, 2));
 echo "</pre>";
 
 $countries = ["EG" => "Egypt", "KSA" => "Saudi Arabia", "SY" => "Syria"];
 echo "<pre>";
-print_r(array_chunk($countries,2, true));
+print_r(array_chunk($countries, 2, true));
 echo "</pre>";
 
 echo "<pre>";
@@ -760,7 +767,7 @@ echo "<pre>";
 print_r(array_flip($countries));
 echo "</pre>";
 
-echo count($countries) ."<br>";
+echo count($countries) . "<br>";
 
 if (in_array("1", $counting)) :
     echo "The element is found" . "<br>";
@@ -798,21 +805,21 @@ print_r(array_pad($pad, -10, "**"));
 echo "</pre>";
 
 // In mathematics, A product is the result of Multiplication
-$product = [ 20, 4, 55, 4];
+$product = [20, 4, 55, 4];
 echo array_product($product) . "<br>";
 
 $sum = [44, 5, 44, 34];
-echo array_sum($sum) . "<br>";   
+echo array_sum($sum) . "<br>";
 
 echo "<br>*******************<br>";
 $friends = ["Muhammed", "Ahmed", "Younes", "Soliman"];
-echo current($friends) ."<br>";
-echo next($friends) ."<br>";
-echo next($friends) ."<br>";
-echo prev($friends) ."<br>";
-echo next($friends) ."<br>";
-echo reset($friends) ."<br>";
-echo end($friends) ."<br>";
+echo current($friends) . "<br>";
+echo next($friends) . "<br>";
+echo next($friends) . "<br>";
+echo prev($friends) . "<br>";
+echo next($friends) . "<br>";
+echo reset($friends) . "<br>";
+echo end($friends) . "<br>";
 
 echo "<br>*******************<br>";
 $merge_one = ["one" => "PHP", "two" => "CSS", "three" => "JavaScript"];
@@ -856,7 +863,7 @@ print_r($randomNumber);
 echo "</pre>";
 
 echo "<br>*******************<br>";
-$char = ["A","B", "C", "D"];
+$char = ["A", "B", "C", "D"];
 $first = array_shift($char); // Remove from the begining of array
 echo $first . "<br>";
 print_r($char);
@@ -881,7 +888,7 @@ echo "<br>";
 
 echo "<br>*******************<br>";
 $chars = ["A", "B", "C", "D", "E", "F", "G", "H"];
-$chars_with_string_key = ["A" => 1, "B" => 4, "C"=> 5];
+$chars_with_string_key = ["A" => 1, "B" => 4, "C" => 5];
 $chars_with_number_key = [1 => 20, 2 => 30, 3 => 40];
 
 echo "<pre>";
@@ -890,8 +897,8 @@ print_r(array_slice($chars, -2));
 print_r(array_slice($chars, 2, -2));
 print_r(array_slice($chars, 2, 4));
 print_r(array_slice($chars_with_string_key, 0, 2));
-print_r(array_slice($chars_with_number_key, 0, 2 ));
-print_r(array_slice($chars_with_number_key, 0, 2 , true));
+print_r(array_slice($chars_with_number_key, 0, 2));
+print_r(array_slice($chars_with_number_key, 0, 2, true));
 echo "</pre>";
 
 $chars2 = ["A", "B", "C", "D", "E", "F", "G", "H"];
@@ -902,3 +909,202 @@ print_r($chars2);
 print_r(array_splice($chars2, 0, 2, ["str1", "str2"]));
 print_r($chars2);
 echo "</pre>";
+
+echo "<br>*******************<br>";
+// Indexed array.
+$name = ["Muhammed", "Habeba", "Younes", "Soliman"];
+sort($name);
+echo "<pre>";
+print_r($name);
+echo "</pre>";
+
+rsort($name);
+echo "<pre>";
+print_r($name);
+echo "</pre>";
+
+$countries = ["EG" => "Egypt", "KSA" => "Saudi Arabia", "SY" => "Syria"];
+asort($countries);
+echo "<pre>";
+print_r($countries);
+echo "</pre>";
+
+arsort($countries);
+echo "<pre>";
+print_r($countries);
+echo "</pre>";
+
+$codes = ["3" => "Egypt", "1" => "Saudi Arabia", "2" => "Syria"];
+ksort($codes);
+echo "<pre>";
+print_r($codes);
+echo "</pre>";
+
+krsort($codes);
+echo "<pre>";
+print_r($codes);
+echo "</pre>";
+
+$files = ["Photo1.png", "Photo23.png", "Photo3.png"];
+sort($files);
+echo "<pre>";
+print_r($files);
+echo "</pre>";
+
+natsort($files);
+echo "<pre>";
+print_r($files);
+echo "</pre>";
+
+echo "<br>*******************<br>";
+function add_title($fname)
+{
+    return "Mr " . $fname;
+}
+
+echo add_title("osama") . "<br>";
+$first_name = ["Osama", "Ahmed", "Sayed", "Mohammed", "Sameh"];
+$last_name = ["Ameer", "Samy", "Shady", "Amr", "Mohammed"];
+
+echo "<pre>";
+print_r(array_map("add_title", $first_name));
+echo "</pre>";
+
+function add_title2($fname, $lname)
+{
+    return "Mr " . $fname . " " . $lname;
+}
+
+echo add_title2("osama", "Muhammed") . "<br>";
+$first_name = ["Osama", "Ahmed", "Sayed", "Mohammed", "Sameh"];
+$last_name = ["Ameer", "Samy", "Shady", "Amr", "Mohammed"];
+
+echo "<pre>";
+print_r(array_map("add_title2", $first_name, $last_name));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_map(fn($f, $l) => "Hello Mr $f $l", $first_name, $last_name));
+echo "</pre>";
+
+$nums = [
+    1 => 3,
+    6 => 1,
+    4 => 2,
+    5 => 8,
+    3 => 6,
+    7 => 4,
+];
+
+function check_nums($n)
+{
+    return $n > 4;
+}
+
+echo "<pre>";
+print_r(array_filter($nums, "check_nums"));
+echo "</pre>";
+
+echo "<pre>";
+print_r(array_filter($nums, "check_nums", ARRAY_FILTER_USE_KEY));
+echo "</pre>";
+
+function check_nums2($n1, $n2)
+{
+    return $n1 > 4 || $n2 > 4;
+}
+
+echo "<pre>";
+print_r(array_filter($nums, "check_nums2", ARRAY_FILTER_USE_BOTH));
+echo "</pre>";
+
+echo "<br>*******************<br>";
+function add($n1, $n2)
+{
+    return $n1 + $n2;
+}
+$nums = [10, 20, 50, 100, 10];
+
+echo array_reduce($nums, "add", 10) . "<br> ";
+echo "<br>";
+function add2($n1, $n2)
+{
+    echo "$n1 <br>";
+    echo "$n2 <br>";
+    echo "$n1 + $n2 <br>";
+    echo "---------<br>";
+    return $n1 + $n2;
+}
+
+echo array_reduce($nums, "add2", 10) . "<br> ";
+echo "<br>";
+
+echo "<br>====== Math Functions ======<br>";
+
+echo abs(10) . "<br>";
+echo abs(0) . "<br>";
+echo abs(-20) . "<br>";
+
+echo rand(78, 222) . "<br>";
+
+echo 11 / 5 . "<br>";
+echo gettype(11 / 5) . "<br>";
+
+echo intdiv(11, 5) . "<br>";
+echo gettype(intdiv(11, 5)) . "<br>";
+
+echo 11 % 5 . "<br>";
+echo gettype(11 % 5) . "<br>";
+
+echo fmod(11, 5) . "<br>";
+echo gettype(fmod(11, 5)) . "<br>";
+echo "<br>";
+
+echo ceil(44.2) . "<br>";
+echo ceil(44.6) . "<br>";
+echo ceil(44.5) . "<br>";
+echo ceil(-44.5) . "<br>";
+echo "<br>";
+
+echo floor(44.2) . "<br>";
+echo floor(44.6) . "<br>";
+echo floor(44.5) . "<br>";
+echo floor(-44.5) . "<br>";
+echo "<br>";
+
+echo round(44.9) . "<br>";
+echo round(44.9, 1) . "<br>";
+echo round(44.4) . "<br>";
+echo round(44.4, 1) . "<br>";
+echo "<br>";
+
+echo round(44.9, 0, PHP_ROUND_HALF_UP) . "<br>";
+echo round(44.5, 0, PHP_ROUND_HALF_UP) . "<br>";
+echo round(44.4, 0, PHP_ROUND_HALF_DOWN) . "<br>";
+echo round(44.5, 0, PHP_ROUND_HALF_DOWN) . "<br>";
+echo "<br>";
+
+echo round(44.5, 0, PHP_ROUND_HALF_EVEN) . "<br>";
+echo round(44.5, 0, PHP_ROUND_HALF_ODD) . "<br>";
+echo "<br>";
+
+echo sqrt(16) . "<br>";
+echo min([1, 44, 55, 2, -1]) . "<br>";
+echo max([1, 44, 55, 2, -1]) . "<br>";
+echo "<br>";
+
+echo "<br>====== Fliter Function => Validation ======<br>";
+echo "<pre>";
+print_r(filter_list());
+echo "</pre>";
+
+echo filter_id("boolean");
+echo "<br>";
+
+$value = True; // 1 || "Yes" || "On"
+if (filter_var($value, FILTER_VALIDATE_BOOL)) :
+    echo "This is true";
+else :
+    echo "This is false";
+endif;
+echo "<br>";
